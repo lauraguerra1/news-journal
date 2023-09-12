@@ -24,9 +24,11 @@ const App = () => {
   
   return (
     <div className="app">
-      <header className="app-header">
-        <Link className='app-logo' to='/'><img src={logo}  alt='Daily Dispatch logo'/></Link>
-        {!menuOpen && <NavBar openOrCloseMenu={openOrCloseMenu} smallScreen={smallScreen} />}
+      <header className="app-header decorative-heading">
+        <div className='header-decoration decorative-heading'>
+          <Link className='app-logo' to='/'><img src={logo}  alt='Daily Dispatch logo'/></Link>
+          {!menuOpen && <NavBar openOrCloseMenu={openOrCloseMenu} smallScreen={smallScreen} />}
+        </div>
       </header>
       <main>
         {
