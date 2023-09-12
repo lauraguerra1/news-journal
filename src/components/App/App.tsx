@@ -32,7 +32,7 @@ const App = () => {
           menuOpen
             ? <Menu openOrCloseMenu={openOrCloseMenu} />
             : <Routes>
-              <Route path='/' element={<Home />} />
+              <Route path='/' element={<Home articles={articles} />} />
               </Routes>
         }
       </main>
