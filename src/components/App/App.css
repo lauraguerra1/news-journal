@@ -1,3 +1,13 @@
-main {
+main, header {
   animation: fadeIn 1s ease-in;
+}
+
+.app-logo {
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+}
+
+.app-logo img {
+  max-width: 50%;
 }

@@ -1,13 +1,13 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 import { useState, useEffect } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Link } from 'react-router-dom';
 import NavBar from '../NavBar/NavBar';
 import Menu from '../Menu/Menu';
 import Home from '../Home/Home';
 import { article } from '../../types';
 import { newsData } from '../../data/data';
+import logo from '../../images/logo.png';
 
 const App = () => {
   const [articles, setArticles] = useState<article[]>(newsData.articles)
@@ -25,6 +25,7 @@ const App = () => {
   return (
     <div className="app">
       <header className="app-header">
+        <Link className='app-logo' to='/'><img src={logo}  alt='Daily Dispatch logo'/></Link>
         {!menuOpen && <NavBar openOrCloseMenu={openOrCloseMenu} smallScreen={smallScreen} />}
       </header>
       <main>
