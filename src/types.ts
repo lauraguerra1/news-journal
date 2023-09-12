@@ -1,10 +1,14 @@
+type Indexable = {
+  [key: string]: any
+}
+
 type apiResponse = {
   "status": string, 
   "totalResults": number,
   "articles": article[]
 }
 
-type article = {
+type article = Indexable & {
   "source": {
     "id": string,
     "name": string

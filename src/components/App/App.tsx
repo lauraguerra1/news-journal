@@ -5,6 +5,7 @@ import { Routes, Route, Link } from 'react-router-dom';
 import NavBar from '../NavBar/NavBar';
 import Menu from '../Menu/Menu';
 import Home from '../Home/Home';
+import ArticleDetails from '../ArticleDetails/ArticleDetails';
 import { article } from '../../types';
 import { newsData } from '../../data/data';
 import logo from '../../images/logo.png';
@@ -34,9 +35,11 @@ const App = () => {
         {
           menuOpen
             ? <Menu openOrCloseMenu={openOrCloseMenu} />
-            : <Routes>
+            :
+            <Routes>
               <Route path='/' element={<Home articles={articles} />} />
-              </Routes>
+              <Route path='/article-details/:id' element={<ArticleDetails articles={articles} />} />
+            </Routes>
         }
       </main>
     </div>
