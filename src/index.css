@@ -11,3 +11,12 @@ body {
   background: none;
   border: none;
 }
+
+@keyframes fadeIn {
+  0%{
+    opacity: 0;
+  }
+  100% {
+    opacity: 100%;
+  }
+}

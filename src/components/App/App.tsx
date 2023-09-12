@@ -25,7 +25,7 @@ const App = () => {
   return (
     <div className="app">
       <header className="app-header">
-        <NavBar smallScreen={smallScreen} /> 
+        {!menuOpen && <NavBar openOrCloseMenu={openOrCloseMenu} smallScreen={smallScreen} />}
       </header>
       <main>
         {
