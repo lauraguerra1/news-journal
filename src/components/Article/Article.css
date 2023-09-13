@@ -1,0 +1,32 @@
+.article-cover {
+  display: flex; 
+  justify-content: space-between;
+  width: 90vw;
+  padding-bottom: 20px; 
+  margin: 10px 0px;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.408);
+}
+
+.last-blog {
+  border-bottom: none;
+}
+
+.article-cover:hover {
+  box-shadow: 0px 0px 10px 1px rgba(235, 226, 232, 0.62);
+  border-bottom: none;
+  padding: 10px;
+}
+
+.article-title {
+  margin: 0;
+}
+
+.article-cover article {
+  width: 45%;
+}
+
+.article-cover-img {
+  width: 45%;
+  object-fit: cover;
+  height: 300px;
+}
