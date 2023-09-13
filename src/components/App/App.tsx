@@ -59,7 +59,7 @@ const App = () => {
             ? <Menu searchArticles={searchArticles} menuOpen={menuOpen} smallScreen={smallScreen} openOrCloseMenu={openOrCloseMenu} />
             :
             <Routes>
-              <Route path='/' element={<Home articles={articlesToDisplay} />} />
+              <Route path='/' element={<Home articles={articlesToDisplay} allArticles={articles} />} />
               <Route path='/article-details/:id' element={<ArticleDetails articles={articles} />} />
             </Routes>
         }

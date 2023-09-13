@@ -10,14 +10,13 @@ type ArticleProps = {
   index: number
 }
 const Article = ({ article, lastBlog, index }: ArticleProps) => {
-
-  const weekDays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday']
   return (
     <Link  to={`/article-details/${index}`} className={`article-cover ${lastBlog ? 'last-blog' : ''}`}>
       <article>
+        <p className='article-date-top'>{getStringDate(article.publishedAt)}</p>
         <h2 className='article-title'>{article.title}</h2>
         <p>{article.description}</p>
-        <p>{getStringDate(article.publishedAt)}</p>
+        <p className='article-date-bottom'>{getStringDate(article.publishedAt)}</p>
       </article>
       <img className='article-cover-img' src={article.urlToImage} alt={article.title} />
     </Link>
