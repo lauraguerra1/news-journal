@@ -29,9 +29,11 @@ const SearchBar = ({searchArticles, smallScreen, menuOpen, openOrCloseMenu}: Sea
     }
   }
   useEffect(() => {
-    console.log('hello search changed')
     if (!searchValue) {
       searchArticles(searchValue)
+      if (valueSearched) {
+        setValueSearched(false)
+      }
     }
   }, [searchValue])
   // const changeSearchValue = (e: React.ChangeEvent<HTMLInputElement>) => {

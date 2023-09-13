@@ -37,7 +37,7 @@ const App = () => {
       setArticlesToDisplay(articles)
     } else {
       const search = searchTerm.toLowerCase()
-      setArticlesToDisplay(prev => prev.filter(article => article.title.toLowerCase().includes(search) || article.description.toLowerCase().includes(search) || article.content.toLowerCase().includes(search) || article.author.toLowerCase().includes(search)))
+      setArticlesToDisplay(prev => prev.filter(article => article.title.toLowerCase().includes(search) || article.description.toLowerCase().includes(search) || article.content.toLowerCase().includes(search) || article.author.toLowerCase().includes(search) || getStringDate(article.publishedAt).toLowerCase().includes(search)))
     }
   }
   
