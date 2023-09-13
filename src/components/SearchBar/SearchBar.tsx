@@ -1,23 +1,44 @@
 import { useEffect, useState } from "react";
 import search from '../../images/search.png';
 import './SearchBar.css'
+import { useNavigate } from "react-router-dom";
 
 type SearchBarProps = {
   smallScreen: boolean,
-  menuOpen: boolean
+  menuOpen: boolean,
+  openOrCloseMenu: () => void,
+  searchArticles: (searchTerm: string) => void
 }
 
-const SearchBar = ({smallScreen, menuOpen}: SearchBarProps) => {
+const SearchBar = ({searchArticles, smallScreen, menuOpen, openOrCloseMenu}: SearchBarProps) => {
   const [inputShown, setInputShown] = useState(smallScreen && menuOpen)
-  const [searchValue, setSearchValue] = useState('')
+  const [searchValue, setSearchValue] = useState('');
+  const [valueSearched, setValueSearched] = useState(false);
+  const navigate = useNavigate();
   useEffect(() => { 
     setInputShown(smallScreen && menuOpen)
   }, [smallScreen, menuOpen])
 
   const handleSubmit = (e:React.FormEvent) => {
     e.preventDefault()
-    //use navigate to go home
+    valueSearched ? setSearchValue('') : searchArticles(searchValue);
+    setValueSearched(prev => !prev);
+    if (menuOpen) {
+      navigate('/')
+      openOrCloseMenu();
+    }
   }
+  useEffect(() => {
+    console.log('hello search changed')
+    if (!searchValue) {
+      searchArticles(searchValue)
+    }
+  }, [searchValue])
+  // const changeSearchValue = (e: React.ChangeEvent<HTMLInputElement>) => {
+  //   if (!searchValue) {
+      
+  //   }
+  // }
 
   return (
     <section className='search-section'>
@@ -25,7 +46,7 @@ const SearchBar = ({smallScreen, menuOpen}: SearchBarProps) => {
       {inputShown && 
         <form onSubmit={handleSubmit}>
           <input value={searchValue} onChange={(e) => setSearchValue(e.target.value)} className='search-input' type='search' placeholder='SEARCH' />
-          <button className={searchValue.length ? 'search-submit-btn go' : 'go'}>GO</button>
+          <button className={searchValue.length ? 'search-submit-btn go' : 'go'}>{valueSearched ? 'CLEAR' : 'GO'}</button>
         </form>
       }
     </section>

@@ -5,11 +5,12 @@ import './NavBar.css'
 
 type NavBarProps = {
   smallScreen: boolean,
-  openOrCloseMenu: () => void
+  openOrCloseMenu: () => void,
+  searchArticles: (searchTerm: string) => void,
   location: string,
   menuOpen: boolean
 }
-const NavBar = ({ menuOpen, location, smallScreen, openOrCloseMenu }: NavBarProps) => {
+const NavBar = ({ searchArticles, menuOpen, location, smallScreen, openOrCloseMenu }: NavBarProps) => {
   return (
     <nav className='nav'>
       {
@@ -17,11 +18,11 @@ const NavBar = ({ menuOpen, location, smallScreen, openOrCloseMenu }: NavBarProp
           ?
           <div className='small-screen-nav'>
             <button onClick={openOrCloseMenu} className='clear-btn'><img src={menuBtn} alt='open menu button' /></button>
-            {location === '/' && <SearchBar smallScreen={smallScreen} menuOpen={menuOpen} />}
+            {location === '/' && <SearchBar searchArticles={searchArticles}  openOrCloseMenu={openOrCloseMenu} smallScreen={smallScreen} menuOpen={menuOpen} />}
           </div>
           :
           <div className='large-screen-nav'>
-            {location === '/' && <SearchBar smallScreen={smallScreen} menuOpen={menuOpen} />}
+            {location === '/' && <SearchBar searchArticles={searchArticles} openOrCloseMenu={openOrCloseMenu} smallScreen={smallScreen} menuOpen={menuOpen} />}
             <NavLink className='nav-link' to='/'>Home</NavLink>
           </div>
       }

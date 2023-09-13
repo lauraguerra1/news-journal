@@ -15,6 +15,7 @@ import { useLocation } from 'react-router-dom';
 
 const App = () => {
   const [articles, setArticles] = useState<article[]>(newsData.articles)
+  const [articlesToDisplay, setArticlesToDisplay] = useState<article[]>(articles)
   const [smallScreen, setSmallScreen] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
   const openOrCloseMenu = () => setMenuOpen(prev => !prev)
@@ -26,12 +27,25 @@ const App = () => {
     window.addEventListener('resize', changeScreenSize)
     return () => window.removeEventListener('resize', changeScreenSize)
   }, [])
+
+  useEffect(() => {
+    setArticlesToDisplay(articles)
+  }, [articles])
+
+  const searchArticles = (searchTerm: string) => {
+    if (!searchTerm) {
+      setArticlesToDisplay(articles)
+    } else {
+      const search = searchTerm.toLowerCase()
+      setArticlesToDisplay(prev => prev.filter(article => article.title.toLowerCase().includes(search) || article.description.toLowerCase().includes(search) || article.content.toLowerCase().includes(search) || article.author.toLowerCase().includes(search)))
+    }
+  }
   
   return (
     <div className="app">
       {!menuOpen && <header className="app-header decorative-heading">
         <div className='header-decoration decorative-heading'>
-          <NavBar menuOpen={menuOpen} location={location.pathname} openOrCloseMenu={openOrCloseMenu} smallScreen={smallScreen} />
+          <NavBar searchArticles={searchArticles} menuOpen={menuOpen} location={location.pathname} openOrCloseMenu={openOrCloseMenu} smallScreen={smallScreen} />
           {/* <div>
             <p>{getStringDate(`${new Date()}`)}</p>
             <p>Today's Paper</p> */}
@@ -42,10 +56,10 @@ const App = () => {
       <main>
         {
           menuOpen
-            ? <Menu menuOpen={menuOpen} smallScreen={smallScreen} openOrCloseMenu={openOrCloseMenu} />
+            ? <Menu searchArticles={searchArticles} menuOpen={menuOpen} smallScreen={smallScreen} openOrCloseMenu={openOrCloseMenu} />
             :
             <Routes>
-              <Route path='/' element={<Home articles={articles} />} />
+              <Route path='/' element={<Home articles={articlesToDisplay} />} />
               <Route path='/article-details/:id' element={<ArticleDetails articles={articles} />} />
             </Routes>
         }
