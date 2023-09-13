@@ -3,7 +3,7 @@
 }
 
 .article-detail-img {
-  max-width: 100%;
+  width: 100%;
 }
 
 .description-divider {
@@ -14,4 +14,28 @@
 .article-link {
   color: blue; 
   text-decoration: underline;
+}
+
+/* .description-article {
+  display: flex; 
+  flex-direction: column;
+  align-items: center;
+} */
+
+@media screen and (min-width: 1300px){
+  .description-page {
+    width: 80vw;
+  }
+}
+
+@media screen and (min-width: 1700px){
+  .description-page {
+    width: 70vw;
+  }
+}
+
+@media screen and (min-width: 2000px){
+  .description-page {
+    width: 60vw;
+  }
 }

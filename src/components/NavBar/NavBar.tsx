@@ -23,7 +23,9 @@ const NavBar = ({ searchArticles, menuOpen, location, smallScreen, openOrCloseMe
           :
           <div className='large-screen-nav'>
             {location === '/' && <SearchBar searchArticles={searchArticles} openOrCloseMenu={openOrCloseMenu} smallScreen={smallScreen} menuOpen={menuOpen} />}
-            <NavLink className='nav-link' to='/'>Home</NavLink>
+            <div className='nav-link-container'>
+              <NavLink className='nav-link' to='/'>Home</NavLink>
+            </div>
           </div>
       }
     </nav>

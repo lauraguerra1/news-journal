@@ -23,7 +23,7 @@ const ArticleDetails = ({ articles }: ArticleDetailsProps) => {
         article
           ?
           <div className='description-page'>
-            <article>
+            <article className='description-article'>
               <h2 className='description-page-title'>{article.title}</h2>
               <img className='article-detail-img' src={article.urlToImage} alt={article.title} />
             </article>
