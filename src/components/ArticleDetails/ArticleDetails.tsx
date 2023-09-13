@@ -29,7 +29,11 @@ const ArticleDetails = ({ articles }: ArticleDetailsProps) => {
               <img className='article-detail-img' src={article.urlToImage} alt={article.title} />
             </article>
             <div className='description-divider'></div>
-            <p className='description-page-date'>{getStringDate(article.publishedAt)}</p>
+            <p>By {article.author}</p>
+            <p className='description-page-date'>Published on {getStringDate(article.publishedAt)}</p>
+            {/* <div style={{ display: 'flex', justifyContent:'center'}}> */}
+              <a className='article-link' href={article.url} target='_blank'>View the full article here</a>
+            {/* </div> */}
             <div className='description-divider'></div>
           </div>
           : <NotFound />

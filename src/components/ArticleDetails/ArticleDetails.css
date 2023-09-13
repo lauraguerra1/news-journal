@@ -10,3 +10,14 @@
   margin: 10px 0px;
   border-bottom: 2px solid rgba(0, 0, 0, 0.408);
 }
+
+.article-link {
+  background: rgb(176, 173, 173);
+  border: 1px solid rgb(176, 173, 173);
+  border-radius: 25px;
+  padding: 5px;
+}
+.article-link:hover {
+  border: 1px solid rgb(249, 244, 244);
+  box-shadow: 0px 0px 5px 1px rgb(249, 244, 244);
+}
