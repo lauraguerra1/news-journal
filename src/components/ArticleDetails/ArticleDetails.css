@@ -1,5 +1,6 @@
 .description-page {
   width: 90vw;
+  animation: fadeIn 1s ease-in;
 }
 
 .article-detail-img {
@@ -15,12 +16,6 @@
   color: blue; 
   text-decoration: underline;
 }
-
-/* .description-article {
-  display: flex; 
-  flex-direction: column;
-  align-items: center;
-} */
 
 @media screen and (min-width: 1300px){
   .description-page {
