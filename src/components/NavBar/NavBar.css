@@ -1,0 +1,15 @@
+.small-screen-nav {
+  display: flex;
+  width: 90vw;
+}
+
+.large-screen-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 90vw;
+}
+
+.active {
+  text-decoration: underline;
+}

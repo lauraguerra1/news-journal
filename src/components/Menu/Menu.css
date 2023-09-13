@@ -1,3 +1,12 @@
 .menu {
   animation: fadeIn 1s ease-in;
+  display: flex; 
+  flex-direction: column;
+  align-items: center;
+  width: 100vw;
+}
+
+
+.close-btn {
+  align-self: flex-end;
 }

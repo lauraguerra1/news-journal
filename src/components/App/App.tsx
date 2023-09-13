@@ -29,21 +29,20 @@ const App = () => {
   
   return (
     <div className="app">
-      <header className="app-header decorative-heading">
+      {!menuOpen && <header className="app-header decorative-heading">
         <div className='header-decoration decorative-heading'>
-          {location.pathname === '/' && <SearchBar smallScreen={smallScreen} />}
-          {!menuOpen && <NavBar openOrCloseMenu={openOrCloseMenu} smallScreen={smallScreen} />}
+          <NavBar menuOpen={menuOpen} location={location.pathname} openOrCloseMenu={openOrCloseMenu} smallScreen={smallScreen} />
           {/* <div>
             <p>{getStringDate(`${new Date()}`)}</p>
             <p>Today's Paper</p> */}
             <Link className='app-logo' to='/'><img src={logo} alt='Daily Dispatch logo' /></Link>
           {/* </div> */}
         </div>
-      </header>
+      </header>}
       <main>
         {
           menuOpen
-            ? <Menu openOrCloseMenu={openOrCloseMenu} />
+            ? <Menu menuOpen={menuOpen} smallScreen={smallScreen} openOrCloseMenu={openOrCloseMenu} />
             :
             <Routes>
               <Route path='/' element={<Home articles={articles} />} />
