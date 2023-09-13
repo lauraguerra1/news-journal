@@ -1,20 +1,31 @@
 import { NavLink } from "react-router-dom";
 import menuBtn from '../../images/menu.png';
+import SearchBar from "../SearchBar/SearchBar";
 import './NavBar.css'
 
 type NavBarProps = {
   smallScreen: boolean,
-  openOrCloseMenu: () => void
+  openOrCloseMenu: () => void,
+  searchArticles: (searchTerm: string) => void,
+  location: string,
+  menuOpen: boolean
 }
-const NavBar = ({ smallScreen, openOrCloseMenu }: NavBarProps) => {
+const NavBar = ({ searchArticles, menuOpen, location, smallScreen, openOrCloseMenu }: NavBarProps) => {
   return (
     <nav className='nav'>
       {
         smallScreen
-          ? <button onClick={openOrCloseMenu} className='clear-btn'><img src={menuBtn}  alt='open menu button'/></button>
+          ?
+          <div className='small-screen-nav'>
+            <button onClick={openOrCloseMenu} className='clear-btn'><img src={menuBtn} alt='open menu button' /></button>
+            {location === '/' && <SearchBar searchArticles={searchArticles}  openOrCloseMenu={openOrCloseMenu} smallScreen={smallScreen} menuOpen={menuOpen} />}
+          </div>
           :
-          <div>
-            <NavLink to='/'>Home</NavLink>
+          <div className='large-screen-nav'>
+            {location === '/' && <SearchBar searchArticles={searchArticles} openOrCloseMenu={openOrCloseMenu} smallScreen={smallScreen} menuOpen={menuOpen} />}
+            <div className='nav-link-container'>
+              <NavLink className='nav-link' to='/'>Home</NavLink>
+            </div>
           </div>
       }
     </nav>

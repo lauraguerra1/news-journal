@@ -30,3 +30,25 @@
   object-fit: cover;
   height: 300px;
 }
+
+.article-date-top {
+  display: none;
+}
+
+@media screen and (max-width: 700px) {
+  .article-cover {
+    flex-direction: column-reverse;
+  }
+
+  .article-cover article, .article-cover-img{
+    width: 100%;
+  }
+
+  .article-date-top {
+    display: block;
+  }
+
+  .article-date-bottom {
+    display: none;
+  }
+}

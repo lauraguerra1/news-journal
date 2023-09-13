@@ -1,0 +1,26 @@
+.small-screen-nav {
+  display: flex;
+  width: 90vw;
+}
+
+.large-screen-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 90vw;
+  height: 40px;
+}
+
+.active {
+  text-decoration: underline;
+}
+
+.nav-link-container {
+  flex: 1;
+  display: flex; 
+  justify-content: flex-end;
+}
+
+.nav-link {
+  font-size: 20px;
+}
