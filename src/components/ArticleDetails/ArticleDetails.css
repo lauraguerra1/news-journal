@@ -1,0 +1,17 @@
+.description-page {
+  width: 90vw;
+}
+
+.article-detail-img {
+  max-width: 100%;
+}
+
+.description-divider {
+  margin: 10px 0px;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.408);
+}
+
+.article-link {
+  color: blue; 
+  text-decoration: underline;
+}

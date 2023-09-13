@@ -16,7 +16,7 @@ const Article = ({ article, lastBlog, index }: ArticleProps) => {
     <Link  to={`/article-details/${index}`} className={`article-cover ${lastBlog ? 'last-blog' : ''}`}>
       <article>
         <h2 className='article-title'>{article.title}</h2>
-        <p className='articledescription'>{article.description}</p>
+        <p>{article.description}</p>
         <p>{getStringDate(article.publishedAt)}</p>
       </article>
       <img className='article-cover-img' src={article.urlToImage} alt={article.title} />
