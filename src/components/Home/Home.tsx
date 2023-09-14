@@ -8,7 +8,7 @@ type HomeProps = {
   allArticles: article[]
 }
 const Home = ({ articles, allArticles }: HomeProps) => {
-  const articleEls = articles.map((article, i) => <Article key={`${article.source.id}${allArticles.indexOf(article)}`} index={allArticles.indexOf(article)} article={article} lastBlog={i === articles.length - 1 ? true : false} />)
+  const articleEls = articles.map((article, i) => <Article key={Date.now() * Math.random()} index={allArticles.indexOf(article)} article={article} lastBlog={i === articles.length - 1 ? true : false} />)
   return ( 
     <div className='articles-container'>
       {articles.length? articleEls : <NotFound />}

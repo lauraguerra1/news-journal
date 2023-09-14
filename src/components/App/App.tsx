@@ -9,16 +9,20 @@ import ArticleDetails from '../ArticleDetails/ArticleDetails';
 import { article } from '../../types';
 import { newsData } from '../../data/data';
 import logo from '../../images/logo.png';
+import loadingGif from '../../images/loading.gif';
 import { getStringDate } from '../helpers';
 import SearchBar from '../SearchBar/SearchBar';
 import { useLocation } from 'react-router-dom';
 import { getAllNews } from '../../apiCalls';
+import NotFound from '../NotFound/NotFound';
 
 const App = () => {
   const [articles, setArticles] = useState<article[]>([])
   const [articlesToDisplay, setArticlesToDisplay] = useState<article[]>([])
   const [smallScreen, setSmallScreen] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState<Error | null>(null);
   const openOrCloseMenu = () => setMenuOpen(prev => !prev)
   const changeScreenSize = () => window.innerWidth <= 800 ? setSmallScreen(true) : setSmallScreen(false)
   const location = useLocation();
@@ -30,25 +34,23 @@ const App = () => {
   }, [])
 
   useEffect(() => {
-    //add location as dependency 
-    // make an object with diff categories for each location
-    //make the api call based on locations 
-    const apiCall = async (category?: string) => {
-      //setLoading(true)
+    const apiCall = async (global: boolean) => {
+      setLoading(true)
       try {
-        const news = await getAllNews(category);
-        console.log(news)
+        const news = await getAllNews(global);
         setArticles(news.articles);
-        //setLocaing(false)
+        setLoading(false)
       } catch (error) {
-        //if (error instanceof Error) setError(true)
-        //setLoading(false)
-        console.log(error)
+        if (error instanceof Error) setError(error)
+        setLoading(false)
       }
     }
-
-    apiCall()
-  }, [])
+    const globalNews = location.pathname.split('/')[1] ? true : false
+    if (location.pathname === '/' || location.pathname === '/global') {
+      // apiCall(globalNews)
+    }
+    return () => setError(null)
+  }, [location])
 
   useEffect(() => {
     setArticlesToDisplay(articles)
@@ -59,7 +61,7 @@ const App = () => {
       setArticlesToDisplay(articles)
     } else {
       const search = searchTerm.toLowerCase()
-      setArticlesToDisplay(prev => prev.filter(article => article.title.toLowerCase().includes(search) || article.description.toLowerCase().includes(search) || article.content.toLowerCase().includes(search) || article.author.toLowerCase().includes(search) || getStringDate(article.publishedAt).toLowerCase().includes(search)))
+      setArticlesToDisplay(prev => prev.filter(article => article.title?.toLowerCase().includes(search) || article.description?.toLowerCase().includes(search) || article.content?.toLowerCase().includes(search) || article.author?.toLowerCase().includes(search) || getStringDate(article.publishedAt)?.toLowerCase().includes(search)))
     }
   }
   
@@ -78,12 +80,19 @@ const App = () => {
       <main>
         {
           menuOpen
-            ? <Menu searchArticles={searchArticles} menuOpen={menuOpen} smallScreen={smallScreen} openOrCloseMenu={openOrCloseMenu} />
+            ? <Menu location={location.pathname} searchArticles={searchArticles} menuOpen={menuOpen} smallScreen={smallScreen} openOrCloseMenu={openOrCloseMenu} />
             :
-            <Routes>
-              <Route path='/' element={<Home articles={articlesToDisplay} allArticles={articles} />} />
-              <Route path='/article-details/:id' element={<ArticleDetails articles={articles} />} />
-            </Routes>
+            <>
+              {loading
+                ? <div className='loading-container'><img src={loadingGif}  alt='floating newspaper icon'/><p>Loading...</p></div>
+                : error instanceof Error ? <p>Oops! Somewthing went wrong, please try again!</p> :
+              <Routes>
+                <Route path='/' element={<Home articles={articlesToDisplay} allArticles={articles} />} />
+                <Route path='/article-details/:id' element={<ArticleDetails articles={articles} />} />
+                <Route path='*' element={<NotFound />} />
+              </Routes>
+              }
+            </>
         }
       </main>
     </div>

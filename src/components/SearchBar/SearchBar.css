@@ -11,7 +11,14 @@
   height: 30px;
   border: 1px solid grey;
   border-radius: 5px;
+}
+
+.grow-input {
   animation: grow 1s ease-in;
+}
+
+.fade-input {
+  animation: fadeIn 1s ease-in;
 }
 
 form {

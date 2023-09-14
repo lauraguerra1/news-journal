@@ -7,10 +7,11 @@ type SearchBarProps = {
   smallScreen: boolean,
   menuOpen: boolean,
   openOrCloseMenu: () => void,
-  searchArticles: (searchTerm: string) => void
+  searchArticles: (searchTerm: string) => void,
+  inMenu?: boolean
 }
 
-const SearchBar = ({searchArticles, smallScreen, menuOpen, openOrCloseMenu}: SearchBarProps) => {
+const SearchBar = ({inMenu, searchArticles, smallScreen, menuOpen, openOrCloseMenu}: SearchBarProps) => {
   const [inputShown, setInputShown] = useState(smallScreen && menuOpen)
   const [searchValue, setSearchValue] = useState('');
   const [valueSearched, setValueSearched] = useState(false);
@@ -24,11 +25,10 @@ const SearchBar = ({searchArticles, smallScreen, menuOpen, openOrCloseMenu}: Sea
     valueSearched ? setSearchValue('') : searchArticles(searchValue);
     setValueSearched(prev => !prev);
     if (menuOpen) {
-      navigate('/')
       openOrCloseMenu();
     }
   }
-  
+
   useEffect(() => {
     if (!searchValue) {
       searchArticles(searchValue)
@@ -43,7 +43,7 @@ const SearchBar = ({searchArticles, smallScreen, menuOpen, openOrCloseMenu}: Sea
       {!menuOpen && <button className='search-button clear-btn' onClick={() => setInputShown(prev => !prev)} aria-expanded={inputShown ? true : false}><img src={search} alt='search button' /></button>}
       {inputShown && 
         <form onSubmit={handleSubmit}>
-          <input value={searchValue} onChange={(e) => setSearchValue(e.target.value)} className='search-input' type='search' placeholder='SEARCH' />
+          <input value={searchValue} onChange={(e) => setSearchValue(e.target.value)} className={!inMenu ? 'search-input grow-input' : 'search-input fade-input'} type='search' placeholder='SEARCH' />
           <button className={searchValue.length ? 'search-submit-btn go' : 'go'}>{valueSearched ? 'CLEAR' : 'GO'}</button>
         </form>
       }
