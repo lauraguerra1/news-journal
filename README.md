@@ -2,7 +2,6 @@
 <h1>News Journal: Daily Dispatch</h1>
 View the latest U.S. and Global News! 
 
-[DEPLOYED LINK](https://news-journal.vercel.app/)<br>
 
 Technologies used:<br>
   <img src="https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white" />
@@ -31,6 +30,7 @@ Stay informed. Stay connected. Stay ahead with Daily Dispatch.
  </div>
 
 ## Installation Instructions:
+*Please note, this appliation is not deployed as the [News API used for this project](https://newsapi.org/) only allows use from localhost with the free developer plan. In order to access this app, request an api key [here](https://newsapi.org/), then follow the instructions below.*
 - Fork [this](https://github.com/lauraguerra1/news-journal) repository. 
 - Clone it to your local machine using the command: `git clone git@github.com:lauraguerra1/news-journal.git`.
 - Run the command: `cd news-journal`
