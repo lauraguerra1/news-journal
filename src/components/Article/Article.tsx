@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { article } from "../../types";
 import { useEffect } from "react";
 import { getStringDate } from "../helpers";
+import newspaper from '../../images/news.png';
 import './Article.css'
 
 type ArticleProps = {
@@ -18,7 +19,7 @@ const Article = ({ article, lastBlog, index }: ArticleProps) => {
         <p>{article.description}</p>
         <p className='article-date-bottom'>{getStringDate(article.publishedAt)}</p>
       </article>
-      <img className='article-cover-img' src={article.urlToImage} alt={article.title} />
+      <img className='article-cover-img' src={article.urlToImage ? article.urlToImage : newspaper} alt={article.title} />
     </Link>
   )
 }

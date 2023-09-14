@@ -21,7 +21,7 @@ const App = () => {
   const [articlesToDisplay, setArticlesToDisplay] = useState<article[]>([])
   const [smallScreen, setSmallScreen] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
-  const [loading, setLoading] = useState(true)
+  const [loading, setLoading] = useState(false)
   const [error, setError] = useState<Error | null>(null);
   const openOrCloseMenu = () => setMenuOpen(prev => !prev)
   const changeScreenSize = () => window.innerWidth <= 800 ? setSmallScreen(true) : setSmallScreen(false)
@@ -70,11 +70,7 @@ const App = () => {
       {!menuOpen && <header className="app-header decorative-heading">
         <div className='header-decoration decorative-heading'>
           <NavBar searchArticles={searchArticles} menuOpen={menuOpen} location={location.pathname} openOrCloseMenu={openOrCloseMenu} smallScreen={smallScreen} />
-          {/* <div>
-            <p>{getStringDate(`${new Date()}`)}</p>
-            <p>Today's Paper</p> */}
-            <Link className='app-logo' to='/'><img src={logo} alt='Daily Dispatch logo' /></Link>
-          {/* </div> */}
+          <Link className='app-logo' to='/'><img src={logo} alt='Daily Dispatch logo' /></Link>
         </div>
       </header>}
       <main>
@@ -88,8 +84,9 @@ const App = () => {
                 : error instanceof Error ? <p>Oops! Somewthing went wrong, please try again!</p> :
               <Routes>
                 <Route path='/' element={<Home articles={articlesToDisplay} allArticles={articles} />} />
+                <Route path='/global' element={<Home articles={articlesToDisplay} allArticles={articles} />} />
                 <Route path='/article-details/:id' element={<ArticleDetails articles={articles} />} />
-                <Route path='*' element={<NotFound />} />
+                {['*', '/global/*'].map(path => <Route key={path} path={path} element={<NotFound />} />)}
               </Routes>
               }
             </>

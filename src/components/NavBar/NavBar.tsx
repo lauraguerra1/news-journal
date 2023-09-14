@@ -18,14 +18,14 @@ const NavBar = ({ searchArticles, menuOpen, location, smallScreen, openOrCloseMe
           ?
           <div className='small-screen-nav'>
             <button onClick={openOrCloseMenu} className='clear-btn'><img src={menuBtn} alt='open menu button' /></button>
-            {location === '/' && <SearchBar searchArticles={searchArticles}  openOrCloseMenu={openOrCloseMenu} smallScreen={smallScreen} menuOpen={menuOpen} />}
+            {location === '/' && <SearchBar location={location} searchArticles={searchArticles}  openOrCloseMenu={openOrCloseMenu} menuOpen={menuOpen} />}
           </div>
           :
           <div className='large-screen-nav'>
-            {!location.includes('article-details') && <SearchBar searchArticles={searchArticles} openOrCloseMenu={openOrCloseMenu} smallScreen={smallScreen} menuOpen={menuOpen} />}
+            {!location.includes('article-details') && <SearchBar location={location} searchArticles={searchArticles} openOrCloseMenu={openOrCloseMenu} menuOpen={menuOpen} />}
             <div className='nav-link-container'>
-              <NavLink className='nav-link' to='/'>U.S. News</NavLink>
-              <NavLink className='nav-link' to='/global'>Global News</NavLink>
+              <NavLink className='nav-link' to='/'><button className='nav-link-btn clear-btn'>U.S. News</button></NavLink>
+              <NavLink className='nav-link' to='/global'><button className='nav-link-btn clear-btn'>Global News</button></NavLink>
             </div>
           </div>
       }
