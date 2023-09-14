@@ -11,6 +11,7 @@
   height: 30px;
   border: 1px solid grey;
   border-radius: 5px;
+  animation: grow 1s ease-in;
 }
 
 form {
@@ -28,6 +29,7 @@ form {
   border: none;
   font-weight: bold;
   border-radius: 5px;
+  animation: fadeIn 1s ease-in;
 }
 
 .search-submit-btn {

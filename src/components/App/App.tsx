@@ -12,10 +12,11 @@ import logo from '../../images/logo.png';
 import { getStringDate } from '../helpers';
 import SearchBar from '../SearchBar/SearchBar';
 import { useLocation } from 'react-router-dom';
+import { getAllNews } from '../../apiCalls';
 
 const App = () => {
-  const [articles, setArticles] = useState<article[]>(newsData.articles)
-  const [articlesToDisplay, setArticlesToDisplay] = useState<article[]>(articles)
+  const [articles, setArticles] = useState<article[]>([])
+  const [articlesToDisplay, setArticlesToDisplay] = useState<article[]>([])
   const [smallScreen, setSmallScreen] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
   const openOrCloseMenu = () => setMenuOpen(prev => !prev)
@@ -26,6 +27,27 @@ const App = () => {
     changeScreenSize()
     window.addEventListener('resize', changeScreenSize)
     return () => window.removeEventListener('resize', changeScreenSize)
+  }, [])
+
+  useEffect(() => {
+    //add location as dependency 
+    // make an object with diff categories for each location
+    //make the api call based on locations 
+    const apiCall = async (category?: string) => {
+      //setLoading(true)
+      try {
+        const news = await getAllNews(category);
+        console.log(news)
+        setArticles(news.articles);
+        //setLocaing(false)
+      } catch (error) {
+        //if (error instanceof Error) setError(true)
+        //setLoading(false)
+        console.log(error)
+      }
+    }
+
+    apiCall()
   }, [])
 
   useEffect(() => {

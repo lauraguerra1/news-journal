@@ -28,6 +28,7 @@ const SearchBar = ({searchArticles, smallScreen, menuOpen, openOrCloseMenu}: Sea
       openOrCloseMenu();
     }
   }
+  
   useEffect(() => {
     if (!searchValue) {
       searchArticles(searchValue)
@@ -36,11 +37,6 @@ const SearchBar = ({searchArticles, smallScreen, menuOpen, openOrCloseMenu}: Sea
       }
     }
   }, [searchValue])
-  // const changeSearchValue = (e: React.ChangeEvent<HTMLInputElement>) => {
-  //   if (!searchValue) {
-      
-  //   }
-  // }
 
   return (
     <section className='search-section'>
