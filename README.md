@@ -1,46 +1,41 @@
-# Getting Started with Create React App
+<div align="center">
+<h1>News Journal: Daily Dispatch</h1>
+View the latest U.S. and Global News! 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+[DEPLOYED LINK](https://news-journal.vercel.app/)<br>
 
-## Available Scripts
+Technologies used:<br>
+  <img src="https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white" />
+  <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" />
+  <img src="https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white"/>
+  <img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white" />
+  <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white" />
+  <img src="https://img.shields.io/badge/vercel-%23000000.svg?style=for-the-badge&logo=vercel&logoColor=white"/>
+</div>
 
-In the project directory, you can run:
+## Abstract: 
+In an era defined by the relentless flow of information, staying informed has never been more essential. Daily Dispatch is an application designed to provide users with easy access to up-to-the-minute news from both national and global sources, as well as a powerful search feature to delve deeper into the day's events.
 
-### `npm start`
+Stay informed. Stay connected. Stay ahead with Daily Dispatch.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+# Preview of App:
+ <div align='center'> 
+  <h2>View U.S. News</h2>
+<img width="1334" alt="Screen Shot 2023-09-14 at 5 51 29 PM" src="https://github.com/lauraguerra1/news-journal/assets/121131581/5e576e2a-7fa1-4d00-9b7b-60c90ad4f5dd">
+  <h2>Viewing Global News</h2>
+   <img width="1281" alt="Screen Shot 2023-09-14 at 5 51 19 PM" src="https://github.com/lauraguerra1/news-journal/assets/121131581/f5d228ac-b92a-4402-87a9-54638ac304ae">
+  <h2>Search articles</h2>
+   <img width="1404" alt="Screen Shot 2023-09-14 at 6 22 21 PM" src="https://github.com/lauraguerra1/news-journal/assets/121131581/39465d0d-6cac-4f84-ae47-94c3e5cc9e96">
 
-### `npm test`
+ </div>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Installation Instructions:
+- Fork [this](https://github.com/lauraguerra1/news-journal) repository. 
+- Clone it to your local machine using the command: `git clone git@github.com:lauraguerra1/news-journal.git`.
+- Run the command: `cd news-journal`
+- Run the command: `npm install`
+- Run the command: `npm start`
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Context:
+- I am a student of Turing School of Software and Design's 7 month program. This project was completed in the last quarter of the program as a mock interview take home challenge. 
