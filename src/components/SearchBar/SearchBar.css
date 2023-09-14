@@ -13,6 +13,14 @@
   border-radius: 5px;
 }
 
+.grow-input {
+  animation: grow 1s ease-in;
+}
+
+.fade-input {
+  animation: fadeIn 1s ease-in;
+}
+
 form {
   display: flex;
 }
@@ -28,6 +36,7 @@ form {
   border: none;
   font-weight: bold;
   border-radius: 5px;
+  animation: fadeIn 1s ease-in;
 }
 
 .search-submit-btn {
