@@ -47,7 +47,7 @@ const App = () => {
     }
     const globalNews = location.pathname.split('/')[1] ? true : false
     if (location.pathname === '/' || location.pathname === '/global') {
-      // apiCall(globalNews)
+      apiCall(globalNews)
     }
     return () => setError(null)
   }, [location])
